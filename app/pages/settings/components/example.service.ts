@@ -2,15 +2,16 @@ import {Injectable}     from 'angular2/core';
 import {Http, Response} from 'angular2/http';
 import {Headers, RequestOptions} from 'angular2/http';
 import {Observable}     from 'rxjs/Observable';
-
+import {AppSettings} from '../../../appsettings';
 import {Token}           from '../../../shared/services/token';
+
 
 
 @Injectable()
 export class ExampleService {
   constructor (private http: Http) {}
 
-  private _url = 'http://localhost:9000/user/login';  // URL to web api
+  private _url = AppSettings.API_ENDPOINT + '/user/login';  // URL to web api
 
   postExample (): Observable<Token>  {
 
