@@ -3,11 +3,11 @@
         <a class="navbar-brand" (click)="gotoDashboard()" >TwitSec</a>
         
         <ul class="nav navbar-nav top-nav navbar-right pull-xs-right top-right-nav">
-            <li class="nav-item buy-now">
+            <!--<li class="nav-item buy-now">
                 <a href="https://github.com/start-angular/SB-Admin-BS4-Angular-2/archive/master.zip" class="btn btn-default-outline buy-now-btn" role="button" style="padding: .375rem 1rem !important; border-color: #999;">Download Now</a>
-            </li>
-            <li class="dropdown nav-item" dropdown [isOpen]="status.isopen">
-                <!-- <div class="dropdown"> -->
+            </li>-->
+
+            <!--<li class="dropdown nav-item" dropdown [isOpen]="status.isopen">
                     <a class="nav-link dropdown-toggle" href="javascript:;" id="dropdownMenu4" dropdownToggle><i class="fa fa-envelope"></i> <b class="caret"></b><span class="sr-only">(current)</span></a>
                     <ul class="dropdown-menu message-dropdown" aria-labelledby="dropdownMenu4">
                         <li class="message-preview">
@@ -62,10 +62,8 @@
                             <a href="javascript:;" class="dropdown-item text-center">Read All New Messages</a>
                         </li>
                     </ul>
-                <!-- </div> -->
-            </li>
-            <li class="dropdown nav-item" dropdown [isOpen]="status.isopen">
-                <!-- <div class="dropdown"> -->
+            </li>-->
+            <!--<li class="dropdown nav-item" dropdown [isOpen]="status.isopen">
                     <a href="javascript:;" id="name2" class="nav-link dropdown-toggle" dropdownToggle><i class="fa fa-bell"></i> <b class="caret"></b><span class="sr-only">(current)</span></a>
                     <ul class="dropdown-menu alert-dropdown" aria-labelledby="name2">
                         <li >
@@ -82,17 +80,17 @@
                             <a href="javascript:;" class="dropdown-item">View All</a>
                         </li>
                     </ul>
-                <!-- </div> -->
-            </li>
+            </li>-->
             <li class="dropdown nav-item" dropdown [isOpen]="status.isopen">
                 <a href="javascript:;" id="single-button" class="nav-link dropdown-toggle" dropdownToggle><i class="fa fa-user"></i> {{username}} <b class="caret"></b></a>
                 <ul class="dropdown-menu" aria-labelledby="single-button">
                     <li>
                         <a class="dropdown-item" href="javascript:;"><i class="fa fa-fw fa-user"></i> Profile</a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a class="dropdown-item" href="javascript:;"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
                     </li>
+                    -->
                     <li>
                         <a class="dropdown-item" [routerLink]="['Settings']"><i class="fa fa-fw fa-gear"></i> Settings</a>
                     </li>
