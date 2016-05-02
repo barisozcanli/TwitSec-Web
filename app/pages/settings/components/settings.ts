@@ -47,12 +47,11 @@ export class SettingsCmp implements OnInit {
 
     assignObj(user) {
     	this.user=user;
-    	console.log('JSON :'+JSON.stringify({ 'authToken': localStorage.getItem('token')}));
+    	/*console.log('JSON :'+JSON.stringify({ 'authToken': localStorage.getItem('token')}));
     	console.log('JSON :'+JSON.stringify(this.user.preferences));
-
-    	let test = JSON.parse(JSON.stringify(this.user.preferences));
+		let test = JSON.parse(JSON.stringify(this.user.preferences));
     	test.authToken = 'sdfsdf';
-		console.log('testJSON :'+JSON.stringify(test));
+		console.log('testJSON :'+JSON.stringify(test));*/
 		this.sendAutoMessageToNewFollowerRadioModel = this.user.preferences.sendAutoMessageToNewFollower.toString();
 		this.warnWithEmailRadioModel = this.user.preferences.warnWithEmail.toString();
 		this.mentionOldFollowerInTweetRadioModel = this.user.preferences.mentionOldFollowerInTweet.toString();

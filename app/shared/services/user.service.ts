@@ -25,6 +25,18 @@ export class UserService {
                     .catch(this.handleError);
   }
 
+  logout (): Observable<User>  {
+
+    let body = JSON.stringify({ 'authToken': localStorage.getItem('token')});
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = this._baseurl + '/user/logout';
+
+    return this.http.post(url, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   getUser (): Observable<User>  {
 
     let body = JSON.stringify({ 'authToken': localStorage.getItem('token')});

@@ -3,7 +3,8 @@ import {CORE_DIRECTIVES} from 'angular2/common';
 import {Dropdown, DropdownToggle} from 'ng2-bootstrap/ng2-bootstrap';
 import {DROPDOWN_DIRECTIVES, ACCORDION_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {RouteConfig,ROUTER_DIRECTIVES,Router} from 'angular2/router';
-
+import { HTTP_PROVIDERS }    from 'angular2/http';
+import {UserService}	from '../../../shared/services/user.service';
 import {HomeCmp} from '../../../pages/home/components/home';
 
 
@@ -11,7 +12,8 @@ import {HomeCmp} from '../../../pages/home/components/home';
 	selector: 'topnav',
 	templateUrl: './widgets/topnav/components/topnav.html',
 	directives: [Dropdown, DropdownToggle, ROUTER_DIRECTIVES, CORE_DIRECTIVES, ACCORDION_DIRECTIVES],
-	viewProviders: [Dropdown, DropdownToggle, DROPDOWN_DIRECTIVES]
+	viewProviders: [Dropdown, DropdownToggle, DROPDOWN_DIRECTIVES],
+	providers:[HTTP_PROVIDERS, UserService]
 })
 @RouteConfig([
 	{ path: '/home', component: HomeCmp, as: 'Home' }
@@ -23,11 +25,21 @@ export class TopNavCmp {
 	    isFirstOpen: true,
 	    isFirstDisabled: false
 	};
-	constructor(private _router: Router) { }
+	username:string;
+
+	constructor(private _router: Router, private _userService: UserService) { }
 	gotoDashboard() {
 		this._router.navigate(['Home']);
 	}
-	gotoLogin() {
-		this._router.navigate(['Login']);
+	logout() {
+		this._userService.logout()
+   				.subscribe(
+   					()=>this._router.navigate(['Login']));
 	}
+
+	ngOnInit() {
+		this.username = localStorage.getItem('connectedUserName');
+		/*console.log('localstorage'+localStorage.getItem('connectedUserName'));
+		console.log('user'+this.username);*/
+    }
 }
