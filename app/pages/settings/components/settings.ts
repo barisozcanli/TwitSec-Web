@@ -3,6 +3,7 @@ import {Router} from 'angular2/router';
 import { HTTP_PROVIDERS }    from 'angular2/http';
 import {UserService}	from '../../../shared/services/user.service';
 import {User}           from '../../../shared/models/user';
+import {UnwantedUsername}           from '../../../shared/models/unwantedusername';
 import {UserPreferences}           from '../../../shared/models/user.preferences';
 import {
     BUTTON_DIRECTIVES}
@@ -23,6 +24,9 @@ export class SettingsCmp implements OnInit {
 	errorMessage: string;
 	user: User;
 	preferences:UserPreferences;
+	unwantedUsernamePatterns:string[];
+	unwantedUsernamePatternsStr:string = '';
+	unwantedUsernamePatternObj:UnwantedUsername;
 	gotoDashboard() {
 		this._router.navigate(['Home']);
 	}
@@ -36,6 +40,14 @@ export class SettingsCmp implements OnInit {
     }
 
     updatePreferences() {
+		var test = this.unwantedUsernamePatternObj.pattern.split(' ');
+
+		this.user.preferences.unwantedUsernamePatterns = [];
+		for (var _i = 0; _i < test.length; _i++) {
+    		var item = test[_i];
+    		this.user.preferences.unwantedUsernamePatterns[_i] = item;
+    		console.log('test : '+ item);
+		}
     	this.user.preferences.sendAutoMessageToNewFollower = (this.sendAutoMessageToNewFollowerRadioModel === 'true');
     	this.user.preferences.warnWithEmail = (this.warnWithEmailRadioModel === 'true');
     	this.user.preferences.mentionOldFollowerInTweet = (this.mentionOldFollowerInTweetRadioModel === 'true');
@@ -55,5 +67,14 @@ export class SettingsCmp implements OnInit {
 		this.sendAutoMessageToNewFollowerRadioModel = this.user.preferences.sendAutoMessageToNewFollower.toString();
 		this.warnWithEmailRadioModel = this.user.preferences.warnWithEmail.toString();
 		this.mentionOldFollowerInTweetRadioModel = this.user.preferences.mentionOldFollowerInTweet.toString();
+		this.unwantedUsernamePatterns = this.user.preferences.unwantedUsernamePatterns;
+		console.log(this.unwantedUsernamePatterns);
+
+		for (var _i = 0; _i < this.unwantedUsernamePatterns.length; _i++) {
+    		var item = this.unwantedUsernamePatterns[_i];
+    		this.unwantedUsernamePatternsStr += item + ' ';
+		}
+		this.unwantedUsernamePatternObj = new UnwantedUsername(this.unwantedUsernamePatternsStr);
+		console.log(this.unwantedUsernamePatternObj.pattern);
     }
 }

@@ -61,8 +61,13 @@
                 </fieldset>
 
                 <fieldset class="form-group">
-                    <label>Goodby tweet content : </label>
+                    <label>Goodbye tweet content : </label>
                     <input type="text" [(ngModel)]="user.preferences.goodByeTweetContent" ngControl="goodByeTweetContent"  #goodByeTweetContent="ngForm" class="form-control">
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Unwanted username patterns : </label>
+                    <input type="text" [(ngModel)]="unwantedUsernamePatternObj.pattern" ngControl="pattern"  #pattern="ngForm" class="form-control">
                 </fieldset>
 
                 <button type="button" (click)="updatePreferences()" class="btn btn-secondary">Update</button>
