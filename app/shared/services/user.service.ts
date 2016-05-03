@@ -5,6 +5,7 @@ import {Observable}          from 'rxjs/Observable';
 import {AppSettings}         from '../../appsettings';
 import {Token}               from '../models/token';
 import {User}                from '../models/user';
+import {BlockedReport}        from '../models/blocked.report';
 import {UserPreferences}    from '../models/user.preferences';
 
 @Injectable()
@@ -49,7 +50,19 @@ export class UserService {
                     .catch(this.handleError);
   }
 
-    updatePreferences (preferences:UserPreferences): Observable<UserPreferences>  {
+  getBlockedUsers (): Observable<BlockedReport[]>  {
+
+    let body = JSON.stringify({ 'authToken': localStorage.getItem('token')});
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = this._baseurl + '/user/getBlockedUsers';
+
+    return this.http.post(url, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  updatePreferences (preferences:UserPreferences): Observable<UserPreferences>  {
       var body = JSON.parse('{}');
       body.authToken = JSON.parse(JSON.stringify(localStorage.getItem('token')));
       body.userPreferences = JSON.parse(JSON.stringify(preferences));

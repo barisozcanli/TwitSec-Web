@@ -1,0 +1,119 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                Blocked Users
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i>  <a href="Javascript:void(0)" (click)="gotoDashboard()">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-desktop"></i> Bootstrap Elements
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1>Cards</h1>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="col-sm-4" *ngFor="#blockedReport of blockedReports">
+            <div class="card">
+                <div class="card-header card-default">
+                    {{ blockedReport.twitterUser.screenName }}
+                </div>
+                <div class="card-block">
+                    <img src="{{ blockedReport.twitterUser.miniProfileImageURL}}" />
+                    {{ blockedReport.twitterUser.name}}
+                    Block Reason : username includes {{ blockedReport.blockReason}}{{ blockedReport.twitterUser.URL}}
+                </div>
+            </div>
+            <div class="card card-primary card-inverse">
+                <div class="card-header card-primary">
+                    Card title
+                </div>
+                <div class="card-block bg-white">
+                    Card content
+                </div>
+            </div>
+        </div>
+        <!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+            <div class="card card-success card-inverse">
+                <div class="card-header card-success">
+                    Card title
+                </div>
+                <div class="card-block bg-white">
+                    Card content
+                </div>
+            </div>
+            <div class="card card-info card-inverse">
+                <div class="card-header card-info">
+                    Card title
+                </div>
+                <div class="card-block bg-white">
+                    Card content
+                </div>
+            </div>
+        </div>
+        <!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+            <div class="card card-warning card-inverse">
+                <div class="card-header card-warning">
+                    Card title
+                </div>
+                <div class="card-block bg-white">
+                    Card content
+                </div>
+            </div>
+            <div class="card card-danger card-inverse">
+                <div class="card-header card-danger">
+                    Card title
+                </div>
+                <div class="card-block bg-white">
+                    Card content
+                </div>
+            </div>
+        </div>
+        <!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+            <div class="card card-success card-inverse">
+                <div class="card-header card-success">
+                    Card title
+                </div>
+                <div class="card-block bg-white">
+                    Card content
+                </div>
+            </div>
+        </div>
+        <!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+            <div class="card card-warning card-inverse">
+                <div class="card-header card-warning">
+                    Card title
+                </div>
+                <div class="card-block bg-white">
+                    Card content
+                </div>
+            </div>
+        </div>
+        <!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+            <div class="card card-danger card-inverse">
+                <div class="card-header card-danger">
+                    Card title
+                </div>
+                <div class="card-block bg-white">
+                    Card content
+                </div>
+            </div>
+        </div>
+        <!-- /.col-sm-4 -->
+    </div>
+
+</div>

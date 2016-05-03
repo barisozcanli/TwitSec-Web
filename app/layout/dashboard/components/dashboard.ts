@@ -11,6 +11,7 @@ import {FormCmp} from '../../../pages/forms/components/forms';
 import {SettingsCmp} from '../../../pages/settings/components/settings';
 import {TableCmp} from '../../../pages/tables/components/tables';
 import {BSCmp} from '../../../pages/bootstrap-element/components/bs_element';
+import {BlockedUsersCmp} from '../../../pages/blocked-users/components/blocked.users';
 import {BlankPageCmp} from '../../../pages/blank-page/components/blank_page';
 import {ComponentCmp} from '../../../pages/component/components/component';
 import {TopNavCmp} from '../../../widgets/topnav/components/topnav';
@@ -30,6 +31,7 @@ import {SidebarCmp} from '../../../widgets/sidebar/components/sidebar';
   { path: '/forms', component: FormCmp, as: 'Forms' },
   { path: '/settings', component: SettingsCmp, as: 'Settings' },
   { path: '/bootstrap-element', component: BSCmp, as: 'BSElement' },
+  { path: '/blocked.users', component: BlockedUsersCmp, as: 'BlockedUsers' },
   { path: '/component', component: ComponentCmp, as: 'Component' },
   { path: '/blank-page', component: BlankPageCmp, as: 'BlankPage' }
 ])
