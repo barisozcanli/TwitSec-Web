@@ -6,6 +6,7 @@ ROUTER_DIRECTIVES
 
 import {HomeCmp} from '../../../pages/home/components/home';
 import {ChartCmp} from '../../../pages/charts/components/charts';
+import {ReportsCmp} from '../../../pages/reports/components/reports';
 import {GridCmp} from '../../../pages/grid/components/grid';
 import {FormCmp} from '../../../pages/forms/components/forms';
 import {SettingsCmp} from '../../../pages/settings/components/settings';
@@ -26,6 +27,7 @@ import {SidebarCmp} from '../../../widgets/sidebar/components/sidebar';
 @RouteConfig([
   { path: '/', component: HomeCmp, as: 'Home', useAsDefault:true},
   { path: '/charts', component: ChartCmp, as: 'Chart' },
+  { path: '/reports', component: ReportsCmp, as: 'Reports' },
   { path: '/grid', component: GridCmp, as: 'Grid' },
   { path: '/tables', component: TableCmp, as: 'Tables' },
   { path: '/forms', component: FormCmp, as: 'Forms' },

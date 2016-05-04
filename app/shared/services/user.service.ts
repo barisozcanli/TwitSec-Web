@@ -4,8 +4,10 @@ import {Headers, RequestOptions} from 'angular2/http';
 import {Observable}          from 'rxjs/Observable';
 import {AppSettings}         from '../../appsettings';
 import {Token}               from '../models/token';
+import {AuthURL}               from '../models/authurl';
 import {User}                from '../models/user';
 import {BlockedReport}        from '../models/blocked.report';
+import {FollowerReport}        from '../models/follower.report';
 import {UserPreferences}    from '../models/user.preferences';
 
 @Injectable()
@@ -13,6 +15,18 @@ export class UserService {
   constructor (private http: Http) {}
 
   private _baseurl = AppSettings.API_ENDPOINT;
+
+  getAuthURL (): Observable<AuthURL>  {
+
+    let body = JSON.stringify({ });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = this._baseurl + '/user/authUrl';
+
+    return this.http.post(url, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
 
   login (username: string, password: string): Observable<Token>  {
 
@@ -56,6 +70,18 @@ export class UserService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let url = this._baseurl + '/user/getBlockedUsers';
+
+    return this.http.post(url, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  getFollowerReports (followAction:string, limit:number): Observable<FollowerReport[]>  {
+
+    let body = JSON.stringify({ 'authToken': localStorage.getItem('token'), 'followAction':followAction, 'limit':limit});
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = this._baseurl + '/user/getFollowerReports';
 
     return this.http.post(url, body, options)
                     .map(this.extractData)

@@ -5,6 +5,7 @@ export class TwitterUser {
 	public name:string,
 	public followersCount:number,
 	public friendsCount:number,
+	public tweetCount:number,
 	public miniProfileImageURL:string,
 	public profileImageURL:string,
 	public biggerProfileImageURL:string,

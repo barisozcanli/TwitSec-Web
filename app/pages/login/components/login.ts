@@ -2,7 +2,8 @@ import {Component} 		from 'angular2/core';
 import {Router} 		from 'angular2/router';
 import {HTTP_PROVIDERS}	from 'angular2/http';
 import {UserService}	from '../../../shared/services/user.service';
-import {Token}           from '../../../shared/models/token';
+import {Token}          from '../../../shared/models/token';
+import {AuthURL}        from '../../../shared/models/authurl';
 import {User}           from '../../../shared/models/user';
 @Component({
 	selector : 'login',
@@ -16,6 +17,8 @@ export class LoginCmp {
 	errorMessage: string;
 	datam: Token;
 	user:User;
+	authURL:AuthURL;
+
 
 	login(username:string, password:string) {
 		this._userService.login(username, password).subscribe(
@@ -23,13 +26,21 @@ export class LoginCmp {
                        error =>  this.errorMessage = <any>error,
                        ()=>this.getUser());
 	}
-	gotoSignup() {
-		this._router.navigate(['Signup']);
+	gotoSignup(url:string) {
+		window.location.href=url;
 	}
 
 	test(body) {
 		this.datam = body;
 		localStorage.setItem('token', this.datam.token);
+	}
+
+	getTwitterAuthURL() {
+		this._userService.getAuthURL()
+   				.subscribe(
+   					authURL => this.authURL=authURL,
+   					error =>  this.errorMessage = <any>error,
+   					()=>window.location.href=this.authURL.url);
 	}
 
 	getUser() {
