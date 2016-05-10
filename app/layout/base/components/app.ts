@@ -6,6 +6,7 @@ import {
 
 import {LoginCmp} from '../../../pages/login/components/login';
 import {SignupCmp} from '../../../pages/signup/components/signup';
+import {LoginTwitterCmp} from '../../../pages/login-twitter/components/login.twitter';
 import {DashboardCmp} from '../../dashboard/components/dashboard';
 
 @Component({
@@ -18,6 +19,7 @@ import {DashboardCmp} from '../../dashboard/components/dashboard';
 @RouteConfig([
   { path: '/', component: LoginCmp, as: 'Login', useAsDefault:true},
   { path: '/signup', component: SignupCmp, as: 'Signup' },
+  { path: '/loginTwitter', component: LoginTwitterCmp, as: 'Login Twitter' },
   { path: '/dashboard/...', component: DashboardCmp, as: 'Dashboard' }
 ])
 export class AppCmp { }

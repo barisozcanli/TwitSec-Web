@@ -40,6 +40,18 @@ export class UserService {
                     .catch(this.handleError);
   }
 
+  loginWithTwitter (oauthToken: string, verifier: string): Observable<Token>  {
+
+    let body = JSON.stringify({ 'oauthToken': oauthToken, 'verifier':verifier });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = this._baseurl + '/user/loginTwitter';
+
+    return this.http.post(url, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   logout (): Observable<User>  {
 
     let body = JSON.stringify({ 'authToken': localStorage.getItem('token')});
