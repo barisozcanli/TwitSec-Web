@@ -4,7 +4,7 @@
         	<img src="assets/img/SB-admin.png" width="150px" class="user-avatar" />
         	
 			<h1>TwitSec</h1>
-			<img src="assets/img/signintwitter.png" />
+			<a style="cursor: pointer; cursor: hand;" (click)="getTwitterAuthURL()"><img src="assets/img/signintwitter.png" /></a>
 			<!--
 			<form role="form">
 				<div class="form-content">
@@ -20,8 +20,9 @@
 				&nbsp;
 				<a type="submit" class="btn rounded-btn" (click)="gotoSignup()">Register</a>
 			</form>
-			-->
+		
 			<a type="submit" class="btn rounded-btn" (click)="getTwitterAuthURL()">Test</a>
+			-->
 		</div>	
 	</div>
 </div>
