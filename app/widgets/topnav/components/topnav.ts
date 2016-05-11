@@ -6,6 +6,7 @@ import {RouteConfig,ROUTER_DIRECTIVES,Router} from 'angular2/router';
 import { HTTP_PROVIDERS }    from 'angular2/http';
 import {UserService}	from '../../../shared/services/user.service';
 import {HomeCmp} from '../../../pages/home/components/home';
+import {ProfileCmp} from '../../../pages/profile/components/profile';
 
 
 @Component({
@@ -16,7 +17,8 @@ import {HomeCmp} from '../../../pages/home/components/home';
 	providers:[HTTP_PROVIDERS, UserService]
 })
 @RouteConfig([
-	{ path: '/home', component: HomeCmp, as: 'Home' }
+	{ path: '/home', component: HomeCmp, as: 'Home' },
+  { path: '/profile', component: ProfileCmp, as: 'Profile' }
 ])
 export class TopNavCmp {
 	public oneAtATime:boolean = true;

@@ -116,6 +116,17 @@ export class UserService {
                     .catch(this.handleError);
   }
 
+  changeEmail (email: string): Observable<User> {
+    let body = JSON.stringify({ 'authToken': localStorage.getItem('token'), 'email': email });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = this._baseurl + '/user/updateUserInfo';
+
+    return this.http.post(url, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
