@@ -39,7 +39,7 @@ export class LoginTwitterCmp {
    				.subscribe(
    					user => this.assignObj(user),
    					error =>  this.errorMessage = <any>error,
-   					()=>this._router.navigate(['Dashboard']));
+   					()=>location.href=location.origin+location.pathname+'#dashboard');
 	}
 
 	assignObj(user) {
