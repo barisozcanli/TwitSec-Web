@@ -19,6 +19,17 @@ export class LoginCmp {
 	user:User;
 	authURL:AuthURL;
 
+	ngOnInit() {
+		var oauth_token = localStorage.getItem('oauth_token');
+		var oauth_verifier = localStorage.getItem('oauth_verifier');
+
+		if (typeof oauth_token !== 'undefined' && oauth_token !== null) {
+			this._userService.loginWithTwitter(oauth_token, oauth_verifier).subscribe(
+						body => this.test(body),
+                       error =>  this.errorMessage = <any>error,
+                       ()=>this.getUser());
+		}
+    }
 
 	login(username:string, password:string) {
 		this._userService.login(username, password).subscribe(
@@ -48,7 +59,7 @@ export class LoginCmp {
    				.subscribe(
    					user => this.assignObj(user),
    					error =>  this.errorMessage = <any>error,
-   					()=>this._router.navigate(['Dashboard']));
+   					()=>location.href=location.origin+location.pathname+'#dashboard');
 	}
 
 	assignObj(user) {
