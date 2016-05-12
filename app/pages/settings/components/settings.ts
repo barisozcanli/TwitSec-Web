@@ -43,11 +43,12 @@ export class SettingsCmp implements OnInit {
 		var test = this.unwantedUsernamePatternObj.pattern.split(' ');
 
 		this.user.preferences.unwantedUsernamePatterns = [];
+		var item;
 		for (var _i = 0; _i < test.length; _i++) {
-    		var item = test[_i];
-    		this.user.preferences.unwantedUsernamePatterns[_i] = item;
-    		console.log('test : '+ item);
+    		item = test[_i];
 		}
+		this.user.preferences.unwantedUsernamePatterns[_i] = item.trim();
+
     	this.user.preferences.sendAutoMessageToNewFollower = (this.sendAutoMessageToNewFollowerRadioModel === 'true');
     	this.user.preferences.warnWithEmail = (this.warnWithEmailRadioModel === 'true');
     	this.user.preferences.mentionOldFollowerInTweet = (this.mentionOldFollowerInTweetRadioModel === 'true');
@@ -74,6 +75,7 @@ export class SettingsCmp implements OnInit {
     		var item = this.unwantedUsernamePatterns[_i];
     		this.unwantedUsernamePatternsStr += item + ' ';
 		}
+		this.unwantedUsernamePatternsStr = this.unwantedUsernamePatternsStr.trim();
 		this.unwantedUsernamePatternObj = new UnwantedUsername(this.unwantedUsernamePatternsStr);
 		console.log(this.unwantedUsernamePatternObj.pattern);
     }
