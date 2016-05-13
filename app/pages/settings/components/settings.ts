@@ -6,17 +6,17 @@ import {User}           from '../../../shared/models/user';
 import {UnwantedUsername}           from '../../../shared/models/unwantedusername';
 import {UserPreferences}           from '../../../shared/models/user.preferences';
 import {BUTTON_DIRECTIVES}from 'ng2-bootstrap/ng2-bootstrap';
-import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+//import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
 	selector: 'form',
 	templateUrl: './pages/settings/components/settings.html',
-	providers: [HTTP_PROVIDERS,UserService, ToastsManager],
+	providers: [HTTP_PROVIDERS,UserService/*, ToastsManager*/],
 	directives:[BUTTON_DIRECTIVES]
 })
 
 export class SettingsCmp implements OnInit {
-	constructor(private _router: Router, private _userService: UserService, public toastr: ToastsManager) { }
+	constructor(private _router: Router, private _userService: UserService/*, public toastr: ToastsManager*/) { }
 	sendAutoMessageToNewFollowerRadioModel:string = 'true';
 	warnWithEmailRadioModel:string = 'true';
 	mentionOldFollowerInTweetRadioModel:string = 'true';
@@ -59,7 +59,7 @@ export class SettingsCmp implements OnInit {
     }
     successMsg() {
     	console.log('toastr start');
-    	this.toastr.success('User settings updated!', 'Success');
+    	//this.toastr.success('User settings updated!', 'Success');
     	console.log('toastr end');
     }
 

@@ -20,6 +20,7 @@ export class LoginCmp {
 	authURL:AuthURL;
 
 	ngOnInit() {
+		/*
 		var oauth_token = localStorage.getItem('oauth_token');
 		var oauth_verifier = localStorage.getItem('oauth_verifier');
 
@@ -30,7 +31,7 @@ export class LoginCmp {
 						body => this.test(body),
                        error =>  this.errorMessage = <any>error,
                        ()=>this.getUser());
-		}
+		}*/
     }
 
 	login(username:string, password:string) {
@@ -49,7 +50,7 @@ export class LoginCmp {
 	}
 
 	getTwitterAuthURL() {
-		this._userService.getAuthURL()
+			this._userService.getAuthURL()
    				.subscribe(
    					authURL => this.authURL=authURL,
    					error =>  this.errorMessage = <any>error,

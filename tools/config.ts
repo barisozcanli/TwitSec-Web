@@ -67,8 +67,7 @@ export const DEV_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencie
   { src: 'jquery/dist/jquery.min.js', inject: 'libs', dest: JS_DEST },
   { src: 'ng2-bootstrap/bundles/ng2-bootstrap.min.js', inject: 'libs', dest: JS_DEST },
   { src: 'highcharts/highcharts.js', inject: 'libs', dest: JS_DEST },
-  { src: 'highcharts/modules/exporting.js', inject: 'libs', dest: JS_DEST },
-  { src: 'ng2-toastr/bundles/ng2-toastr.min.js', inject: 'libs', dest: JS_DEST }
+  { src: 'highcharts/modules/exporting.js', inject: 'libs', dest: JS_DEST }
 ]);
 
 export const PROD_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencies([
@@ -77,16 +76,14 @@ export const PROD_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependenci
   { src: 'angular2/bundles/angular2-polyfills.min.js', inject: 'libs' },
   { src: 'jquery/dist/jquery.min.js', inject: 'libs', dest: JS_DEST },
   { src: 'highcharts/highcharts.js', inject: 'libs', dest: JS_DEST },
-  { src: 'highcharts/modules/exporting.js', inject: 'libs', dest: JS_DEST },
-  { src: 'ng2-toastr/bundles/ng2-toastr.min.js', inject: 'libs', dest: JS_DEST }
+  { src: 'highcharts/modules/exporting.js', inject: 'libs', dest: JS_DEST }
 ]);
 
 // Declare local files that needs to be injected
 export const APP_ASSETS: InjectableDependency[] = [
   { src: `${ASSETS_SRC}/font-awesome-4.5.0/css/font-awesome.min.css`, inject: true, dest: CSS_DEST },
   { src: `${ASSETS_SRC}/bootstrap/bootstrap.css`, inject: true, dest: CSS_DEST },
-  { src: `${ASSETS_SRC}/main.css`, inject: true, dest: CSS_DEST },
-  { src: `${ASSETS_SRC}/ng2-toastr.min.css`, inject: true, dest: CSS_DEST }
+  { src: `${ASSETS_SRC}/main.css`, inject: true, dest: CSS_DEST }
 ];
 
 export const DEV_DEPENDENCIES = DEV_NPM_DEPENDENCIES.concat(APP_ASSETS);

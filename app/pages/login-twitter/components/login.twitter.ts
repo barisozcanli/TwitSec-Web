@@ -22,14 +22,10 @@ export class LoginTwitterCmp {
 		var oauth_token = this._params.get('oauth_token');
 		var oauth_verifier = this._params.get('oauth_verifier');
 
-		localStorage.setItem('oauth_token', oauth_token);
-		localStorage.setItem('oauth_verifier', oauth_verifier);
-
 		this._userService.loginWithTwitter(oauth_token, oauth_verifier).subscribe(
 						body => this.test(body),
                        error =>  this.errorMessage = <any>error,
                        ()=>this.getUser());
-
     }
 
    	test(body) {
