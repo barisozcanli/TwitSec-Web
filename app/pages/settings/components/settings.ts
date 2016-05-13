@@ -5,19 +5,18 @@ import {UserService}	from '../../../shared/services/user.service';
 import {User}           from '../../../shared/models/user';
 import {UnwantedUsername}           from '../../../shared/models/unwantedusername';
 import {UserPreferences}           from '../../../shared/models/user.preferences';
-import {
-    BUTTON_DIRECTIVES}
-from 'ng2-bootstrap/ng2-bootstrap';
+import {BUTTON_DIRECTIVES}from 'ng2-bootstrap/ng2-bootstrap';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
 	selector: 'form',
 	templateUrl: './pages/settings/components/settings.html',
-	providers: [HTTP_PROVIDERS,UserService],
+	providers: [HTTP_PROVIDERS,UserService, ToastsManager],
 	directives:[BUTTON_DIRECTIVES]
 })
 
 export class SettingsCmp implements OnInit {
-	constructor(private _router: Router, private _userService: UserService) { }
+	constructor(private _router: Router, private _userService: UserService, public toastr: ToastsManager) { }
 	sendAutoMessageToNewFollowerRadioModel:string = 'true';
 	warnWithEmailRadioModel:string = 'true';
 	mentionOldFollowerInTweetRadioModel:string = 'true';
@@ -55,7 +54,13 @@ export class SettingsCmp implements OnInit {
 
     	this._userService.updatePreferences(this.user.preferences)
     			.subscribe(userPreferences=> this.preferences=userPreferences,
-    					error =>  this.errorMessage = <any>error);
+    					error =>  this.errorMessage = <any>error,
+    					() => this.successMsg());
+    }
+    successMsg() {
+    	console.log('toastr start');
+    	this.toastr.success('User settings updated!', 'Success');
+    	console.log('toastr end');
     }
 
     assignObj(user) {

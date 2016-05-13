@@ -23,6 +23,8 @@ export class LoginCmp {
 		var oauth_token = localStorage.getItem('oauth_token');
 		var oauth_verifier = localStorage.getItem('oauth_verifier');
 
+		console.log('oauth_token'+oauth_token);
+		console.log('oauth_verifier'+oauth_verifier);
 		if (typeof oauth_token !== 'undefined' && oauth_token !== null) {
 			this._userService.loginWithTwitter(oauth_token, oauth_verifier).subscribe(
 						body => this.test(body),
