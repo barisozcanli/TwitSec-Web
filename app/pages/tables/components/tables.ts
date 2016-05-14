@@ -4,6 +4,7 @@ import { HTTP_PROVIDERS }			from 'angular2/http';
 import {UserService}				from '../../../shared/services/user.service';
 import {BUTTON_DIRECTIVES}			from 'ng2-bootstrap/ng2-bootstrap';
 import {FollowerReport}         	from '../../../shared/models/follower.report';
+import {BlockedReport}          from '../../../shared/models/blocked.report';
 
 @Component({
 	selector: 'tables',
@@ -18,6 +19,7 @@ export class TableCmp implements OnInit {
 	errorMessage: string;
 	unfollowerReports:FollowerReport[];
 	followerReports:FollowerReport[];
+	blockedReports:BlockedReport[];
 	gotoDashboard() {
 		this._router.navigate(['Home']);
 	}
@@ -31,6 +33,10 @@ export class TableCmp implements OnInit {
    		this._userService.getFollowerReports('FOLLOWED', 10)
    				.subscribe(
    					followerReports => this.followerReports = followerReports);
+
+   		this._userService.getBlockedUsers()
+   				.subscribe(
+   					blockedReports => this.blockedReports = blockedReports);
     }
 
 }

@@ -3,14 +3,14 @@
     <div class="row">
         <div class="col-xl-12">
             <h1 class="page-header">
-                Tables
+                Reports
             </h1>
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i>  <a href="Javascript:void(0);" (click)="gotoDashboard()">Dashboard</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-table"></i> Tables
+                    <i class="fa fa-table"></i> Reports
                 </li>
             </ol>
         </div>
@@ -18,24 +18,24 @@
     <!-- /.row -->
 
     <div class="row" *ngIf="unfollowerReports != undefined">
-        <div class="col-xl-6 col-lg-12">
+        <div class="col-xl-12 col-lg-12">
             <h2>Unfollowers</h2>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>User</th>
-                            <th>Date</th>
-                            <th>Revenue</th>
+                            <th>Follower Count</th>
+                            <th>Tweet Count</th>
+                            <th>Unfollow Date</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="#unfollowerReport of unfollowerReports">
-                            <td><img src="{{ unfollowerReport.twitterUser.miniProfileImageURL}}" />{{ unfollowerReport.twitterUser.screenName}}</td>
-                            <td></td>
+                            <td><a href="http://twitter.com/{{ unfollowerReport.twitterUser.screenName }}"><img src="{{ unfollowerReport.twitterUser.miniProfileImageURL}}" />{{ unfollowerReport.twitterUser.screenName}}</a></td>
+                            <td>{{ unfollowerReport.twitterUser.followersCount}}</td>
+                            <td>{{ unfollowerReport.twitterUser.friendsCount}}</td>
                             <td>{{ unfollowerReport.createdAt | date:'medium'}}</td>
-                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -44,24 +44,52 @@
     </div>
 
     <div class="row" *ngIf="followerReports != undefined">
-        <div class="col-xl-6 col-lg-12">
+        <div class="col-xl-12 col-lg-12">
             <h2>Followers</h2>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>User</th>
-                            <th>Date</th>
-                            <th>Revenue</th>
+                            <th>Follower Count</th>
+                            <th>Tweet Count</th>
+                            <th>Follow Date</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="#followerReport of followerReports">
-                            <td><img src="{{ followerReport.twitterUser.miniProfileImageURL}}" />{{ followerReport.twitterUser.screenName}}</td>
-                            <td></td>
+                            <td><a href="http://twitter.com/{{ followerReport.twitterUser.screenName }}"><img src="{{ followerReport.twitterUser.miniProfileImageURL}}" />{{ followerReport.twitterUser.screenName}}</a></td>
+                            <td>{{ followerReport.twitterUser.followersCount}}</td>
+                            <td>{{ followerReport.twitterUser.friendsCount}}</td>
                             <td>{{ followerReport.createdAt | date:'medium'}}</td>
-                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="blockedReports != undefined">
+        <div class="col-xl-12 col-lg-12">
+            <h2>Blocked Users</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Follower Count</th>
+                            <th>Tweet Count</th>
+                            <th>Block Reason</th>
+                            <th>Block Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="#blockedReport of blockedReports">
+                            <td><a href="http://twitter.com/{{ blockedReport.twitterUser.screenName }}"><img src="{{ blockedReport.twitterUser.miniProfileImageURL}}" />{{ blockedReport.twitterUser.screenName}}</a></td>
+                            <td>{{ blockedReport.twitterUser.followersCount}}</td>
+                            <td>{{ blockedReport.twitterUser.friendsCount}}</td>
+                            <td>{{ blockedReport.blockReason}}</td>
+                            <td>{{ blockedReport.createdAt | date:'medium'}}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -39,4 +39,4 @@ import {ProfileCmp} from '../../../pages/profile/components/profile';
   { path: '/blank-page', component: BlankPageCmp, as: 'BlankPage' },
   { path: '/profile', component: ProfileCmp, as: 'Profile' }
 ])
-export class DashboardCmp { }
+export class DashboardCmp {}
