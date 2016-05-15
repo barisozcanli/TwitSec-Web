@@ -89,12 +89,37 @@ export class UserService {
                     .catch(this.handleError);
   }
 
+    getBlockedUsersByDay (day:number): Observable<BlockedReport[]>  {
+
+    //let body = JSON.stringify({ 'authToken': localStorage.getItem('token')});
+    let body = JSON.stringify({ 'authToken': localStorage.getItem('token'), 'limit':day});
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = this._baseurl + '/user/getBlockedUsersByDay';
+
+    return this.http.post(url, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   getFollowerReports (followAction:string, limit:number): Observable<FollowerReport[]>  {
 
     let body = JSON.stringify({ 'authToken': localStorage.getItem('token'), 'followAction':followAction, 'limit':limit});
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let url = this._baseurl + '/user/getFollowerReports';
+
+    return this.http.post(url, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  getFollowerReportsByDay (followAction:string, day:number): Observable<FollowerReport[]>  {
+
+    let body = JSON.stringify({ 'authToken': localStorage.getItem('token'), 'followAction':followAction, 'limit':day});
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = this._baseurl + '/user/getFollowerReportsByDay';
 
     return this.http.post(url, body, options)
                     .map(this.extractData)

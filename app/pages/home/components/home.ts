@@ -56,15 +56,15 @@ export class HomeCmp implements OnInit {
 
 	ngOnInit() {
 		console.log('ngOnInit');
-		this._userService.getFollowerReports('UNFOLLOWED', 1)
+		this._userService.getFollowerReportsByDay('UNFOLLOWED', 1)
    				.subscribe(
    					unfollowerReports => this.unfollowerReports = unfollowerReports);
 
-   		this._userService.getFollowerReports('FOLLOWED', 1)
+   		this._userService.getFollowerReportsByDay('FOLLOWED', 1)
    				.subscribe(
    					followerReports => this.followerReports = followerReports);
 
-   		this._userService.getBlockedUsers(1)
+   		this._userService.getBlockedUsersByDay(1)
    				.subscribe(
    					blockedReports => this.blockedReports = blockedReports);
     }

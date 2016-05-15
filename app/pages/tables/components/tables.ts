@@ -26,15 +26,15 @@ export class TableCmp implements OnInit {
 
 	ngOnInit() {
 		console.log('ngOnInit');
-		this._userService.getFollowerReports('UNFOLLOWED', 10)
+		this._userService.getFollowerReports('UNFOLLOWED', 100)
    				.subscribe(
    					unfollowerReports => this.unfollowerReports = unfollowerReports);
 
-   		this._userService.getFollowerReports('FOLLOWED', 10)
+   		this._userService.getFollowerReports('FOLLOWED', 100)
    				.subscribe(
    					followerReports => this.followerReports = followerReports);
 
-   		this._userService.getBlockedUsers(10)
+   		this._userService.getBlockedUsers(100)
    				.subscribe(
    					blockedReports => this.blockedReports = blockedReports);
     }
