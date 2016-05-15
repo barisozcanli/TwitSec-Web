@@ -25,7 +25,7 @@ export class BlockedUsersCmp implements OnInit {
     }
 
 	getBlockedUsers() {
-    	this._userService.getBlockedUsers()
+    	this._userService.getBlockedUsers(10)
    				.subscribe(
    					blockedReports => this.assignObj(blockedReports),
    					error =>  this.errorMessage = <any>error);

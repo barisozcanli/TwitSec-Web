@@ -39,7 +39,7 @@
                 </fieldset>
 
                 <fieldset>
-                    <label>Mention old follower in tweet? </label>
+                    <label>Mention unfollower in tweet? </label>
                     <div class="btn-group">
                         <label class="btn btn-primary" [(ngModel)]="mentionOldFollowerInTweetRadioModel" btnRadio="true">ON</label>
                         <label class="btn btn-primary" [(ngModel)]="mentionOldFollowerInTweetRadioModel" btnRadio="false">OFF</label>
@@ -56,7 +56,7 @@
                 </fieldset>
 
                 <fieldset class="form-group">
-                    <label>Left Follower minimum follower count : </label>
+                    <label>Unfollower's minimum follower count : </label>
                     <input type="text" [(ngModel)]="user.preferences.leftFollowerFollowerCount" ngControl="leftFollowerFollowerCount"  #leftFollowerFollowerCount="ngForm" class="form-control">
                 </fieldset>
 

@@ -76,9 +76,10 @@ export class UserService {
                     .catch(this.handleError);
   }
 
-  getBlockedUsers (): Observable<BlockedReport[]>  {
+  getBlockedUsers (limit:number): Observable<BlockedReport[]>  {
 
-    let body = JSON.stringify({ 'authToken': localStorage.getItem('token')});
+    //let body = JSON.stringify({ 'authToken': localStorage.getItem('token')});
+    let body = JSON.stringify({ 'authToken': localStorage.getItem('token'), 'limit':limit});
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let url = this._baseurl + '/user/getBlockedUsers';

@@ -34,7 +34,7 @@ export class TableCmp implements OnInit {
    				.subscribe(
    					followerReports => this.followerReports = followerReports);
 
-   		this._userService.getBlockedUsers()
+   		this._userService.getBlockedUsers(10)
    				.subscribe(
    					blockedReports => this.blockedReports = blockedReports);
     }
